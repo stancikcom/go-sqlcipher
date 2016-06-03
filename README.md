@@ -39,6 +39,13 @@ This package can be installed with the go get command:
 
     go get github.com/xeodou/go-sqlcipher
 
+In case have received an error like this `go get -u github.com/xeodou/go-sqlcipher` and getting an following error:   
+../github.com/xeodou/go-sqlcipher/sqlite3-binding.c:16824:26: fatal error: openssl/rand.h: No such file or directory
+compilation terminated. 
+
+it means that files from OpenSSL dev package are missing. On ubuntu / debian the solution is simple like this  
+
+
 Documentation
 -------------
 
@@ -76,6 +83,11 @@ Here is some help from go-sqlite3 project.
 * Print some waring messages like `warning: 'RAND_add' is deprecated: first deprecated in OS X 10.7`
 
     You can ignore these messages.
+    
+* Do you receive following error on linux ?
+    > ../github.com/xeodou/go-sqlcipher/sqlite3-binding.c:16824:26: fatal error: openssl/rand.h: No such file or directory
+compilation terminated.
+then make sure that `libssl-dev` package from linux repository is installed. On ubuntu simply use `sudo apt-get install libssl-dev` and retry downloading the package through `go get github.com/xeodou/go-sqlcipher`
 
 License
 -------
